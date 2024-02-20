@@ -47,24 +47,24 @@ class Selleragreepayment extends PaymentModule
         $this->bootstrap = true;
         parent::__construct();
 
-        $this->displayName = $this->trans('Seller Agree Payment');
-        $this->description = $this->trans('Add the payment method agreement with the seller');
+        $this->displayName = $this->trans('Seller Agree Payment', [], 'Modules.SellerAgreePayment.Admin');
+        $this->description = $this->trans('Add the payment method agreement with the seller', [], 'Modules.SellerAgreePayment.Admin');
 
         $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?');
 
         if (!count(Currency::checkPaymentCurrencies($this->id))) {
-            $this->warning = $this->trans('No currency has been set for this module.', array(), 'Modules.Wirepayment.Admin');
+            $this->warning = $this->trans('No currency has been set for this module.', [], 'Modules.SellerAgreePayment.Admin');
         }
 
         if (!Configuration::get('MYMODULE_NAME')) {
             $this->warning = $this->trans('No name provided', [], 'Modules.Mymodule.Admin');
         }
 
-        $this->extra_mail_vars = array(
+        $this->extra_mail_vars = [
             '{bankwire_owner}' => Configuration::get('SELLER_AGREE_OWNER'),
             '{bankwire_details}' => nl2br(Configuration::get('SELLER_AGREE_DETAILS')),
             '{bankwire_address}' => nl2br(Configuration::get('SELLER_AGREE_ADDRESS')),
-            );
+        ];
     }
 
     public function install()
@@ -94,6 +94,6 @@ class Selleragreepayment extends PaymentModule
 
     public function hookPaymentReturn()
     {
-        return $this->fetch('module:ps_wirepayment/views/templates/hook/payment_return.tpl');
+        return $this->fetch('module:selleragreepayment/views/templates/hook/payment_return.tpl');
     }
 }
