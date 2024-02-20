@@ -19,7 +19,7 @@ class Selleragreepayment extends PaymentModule
     {
         $this->name = 'selleragreepayment';
         $this->tab = 'payments_gateways';
-        $this->version = '1.0.1';
+        $this->version = '1.0.3';
         $this->author = 'Franco Jara';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = [
@@ -47,19 +47,15 @@ class Selleragreepayment extends PaymentModule
         $this->bootstrap = true;
         parent::__construct();
 
-        $this->displayName = $this->trans('Seller Agree Payment', [], 'Modules.SellerAgreePayment.Admin');
-        $this->description = $this->trans('Add the payment method agreement with the seller', [], 'Modules.SellerAgreePayment.Admin');
+        $this->displayName = $this->trans('Seller Agree Payment', [], 'Modules.Selleragreepayment.Admin');
+        $this->description = $this->trans('Add the payment method agreement with the seller', [], 'Modules.Selleragreepayment.Admin');
 
         $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?');
 
         if (!count(Currency::checkPaymentCurrencies($this->id))) {
-            $this->warning = $this->trans('No currency has been set for this module.', [], 'Modules.SellerAgreePayment.Admin');
+            $this->warning = $this->trans('No currency has been set for this module.', [], 'Modules.Selleragreepayment.Admin');
         }
-
-        if (!Configuration::get('MYMODULE_NAME')) {
-            $this->warning = $this->trans('No name provided', [], 'Modules.Mymodule.Admin');
-        }
-
+        
         $this->extra_mail_vars = [
             '{bankwire_owner}' => Configuration::get('SELLER_AGREE_OWNER'),
             '{bankwire_details}' => nl2br(Configuration::get('SELLER_AGREE_DETAILS')),
@@ -84,7 +80,7 @@ class Selleragreepayment extends PaymentModule
     {
         $paymentOptions = new PaymentOption();
         $paymentOptions->setModuleName($this->name);
-        $paymentOptions->setCallToActionText($this->trans('Agree with seller payment'));
+        $paymentOptions->setCallToActionText($this->trans('Agree with seller payment', [], 'Modules.Selleragreepayment.Front'));
 
         $paymentOptions->setAction($this->context->link->getModuleLink($this->name, 'validation', ['option' => 'offline'], true));
         $paymentOptions->setAdditionalInformation($this->fetch('module:selleragreepayment/views/templates/hook/selleragreepayment_intro.tpl'));

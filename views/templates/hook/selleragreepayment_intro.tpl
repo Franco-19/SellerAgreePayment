@@ -19,7 +19,7 @@
 
 <section>
   <p>
-    {l s='Agree with seller to pay with your favorite method.' d='Modules.SellerAgreePayment.PaymentOptions'}
+    {l s='Agree with seller to pay with your favorite method.' d='Modules.Selleragreepayment.Paymentoptions'}
   </p>
   {* <p>
     {l s='Please transfer the invoice amount to our bank account. You will receive our order confirmation by email containing bank details and order number.' d='Modules.Wirepayment.Shop'}
