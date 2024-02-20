@@ -96,48 +96,4 @@ class Selleragreepayment extends PaymentModule
     {
         return $this->fetch('module:ps_wirepayment/views/templates/hook/payment_return.tpl');
     }
-
-
-    // public function enable($force_all = false)
-    // {
-    //     return parent::enable($force_all);
-    //         // && $this->installTab()
-    //     ;
-    // }
-
-    // public function disable($force_all = false)
-    // {
-    //     return parent::disable($force_all);
-    //         // && $this->uninstallTab()
-    //     ;
-    // }
-
-    // private function installTab()
-    // {
-    //     $tab = new Tab();
-    //     $tab->active = 1;
-    //     $tab->class_name = 'ImporterController';
-    //     // Only since 1.7.7, you can define a route name
-    //     // $tab->route_name = 'admin_my_symfony_routing';
-    //     $tab->name = [];
-    //     foreach (Language::getLanguages(true) as $lang) {
-    //         $tab->name[$lang['id_lang']] = 'ERP Features Importer';
-    //     }
-    //     // $tab->name = 'ERP Features Importer';
-    //     $tab->id_parent = (int) Tab::getIdFromClassName('AdminTools');
-    //     $tab->module = $this->name;
-
-    //     return $tab->add();
-    // }
-
-    // private function uninstallTab()
-    // {
-    //     $tabId = (int) Tab::getIdFromClassName('ImporterController');
-    //     $tab = new Tab($tabId);
-    //     if (Validate::isLoadedObject($tab)) {
-    //         return $tab->delete();
-    //     }
-
-    //     return false;
-    // }
 }
