@@ -84,7 +84,7 @@ class Selleragreepayment extends PaymentModule
     {
         $paymentOptions = new PaymentOption();
         $paymentOptions->setModuleName($this->name);
-        $paymentOptions->setCallToActionText($this->trans('Custom payment SELLER'));
+        $paymentOptions->setCallToActionText($this->trans('Agree with seller payment'));
 
         $paymentOptions->setAction($this->context->link->getModuleLink($this->name, 'validation', ['option' => 'offline'], true));
         $paymentOptions->setAdditionalInformation($this->fetch('module:selleragreepayment/views/templates/hook/selleragreepayment_intro.tpl'));
